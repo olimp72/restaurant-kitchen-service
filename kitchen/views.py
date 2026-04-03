@@ -19,6 +19,7 @@ def index(request):
     }
     return render(request, "kitchen/index.html", context=context)
 
+
 # --- Dish Views ---
 class DishListView(LoginRequiredMixin, generic.ListView):
     model = Dish
@@ -76,6 +77,17 @@ class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 
 # --- DishType Views ---
+class DishTypeListView(LoginRequiredMixin, generic.ListView):
+    model = DishType
+    paginate_by = 5
+
+
+class DishTypeCreateView(LoginRequiredMixin, generic.CreateView):
+    model = DishType
+    fields = "__all__"
+    success_url = reverse_lazy("kitchen:dishtype-list")
+
+
 class DishTypeUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = DishType
     fields = "__all__"
@@ -88,6 +100,17 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 
 # --- Ingredient Views ---
+class IngredientListView(LoginRequiredMixin, generic.ListView):
+    model = Ingredient
+    paginate_by = 5
+
+
+class IngredientCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Ingredient
+    fields = "__all__"
+    success_url = reverse_lazy("kitchen:ingredient-list")
+
+
 class IngredientUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Ingredient
     fields = "__all__"
