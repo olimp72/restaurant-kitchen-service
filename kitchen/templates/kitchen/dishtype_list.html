@@ -1,0 +1,42 @@
+{% extends "kitchen/base.html" %}
+
+{% block title %}Dish Types{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Dish Types</h2>
+
+    <a href="{% url 'kitchen:dishtype-create' %}" class="btn btn-primary">+ Add Dish Type</a>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        {% if dishtype_list %}
+            <table class="table table-hover mb-0 align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th class="text-end">Actions</th> </tr>
+                </thead>
+                <tbody>
+                    {% for dishtype in dishtype_list %}
+                        <tr>
+                            <td>{{ dishtype.id }}</td>
+                            <td>{{ dishtype.name }}</td>
+                            <td class="text-end">
+                                <a href="{% url 'kitchen:dishtype-update' pk=dishtype.id %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                <a href="{% url 'kitchen:dishtype-delete' pk=dishtype.id %}" class="btn btn-sm btn-outline-danger ms-1">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="p-4 text-center">
+                <p class="text-muted mb-0">No dish types have been added yet.</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
