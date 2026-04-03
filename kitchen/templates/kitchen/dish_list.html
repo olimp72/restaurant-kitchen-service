@@ -1,0 +1,44 @@
+{% extends "kitchen/base.html" %}
+
+{% block title %}Dishes - Kitchen Service{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Dishes List</h2>
+    <a href="{% url 'kitchen:dish-create' %}" class="btn btn-primary">+ Add New Dish</a>
+</div>
+
+<table class="table table-hover table-bordered shadow-sm">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for dish in dish_list %}
+        <tr>
+            <td>{{ dish.id }}</td>
+            <td>
+                <a href="{% url 'kitchen:dish-detail' dish.id %}">{{ dish.name }}</a>
+            </td>
+            <td>{{ dish.dish_type.name }}</td>
+            <td>${{ dish.price }}</td>
+            <td>
+                <a href="{% url 'kitchen:dish-update' dish.id %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                <a href="{% url 'kitchen:dish-delete' dish.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5" class="text-center">No dishes found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% include "kitchen/includes/pagination.html" %}
+{% endblock %}

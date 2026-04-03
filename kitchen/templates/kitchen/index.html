@@ -1,0 +1,37 @@
+{% extends "kitchen/base.html" %}
+
+{% block title %}Home - Kitchen Service{% endblock %}
+
+{% block content %}
+<div class="row text-center mt-5">
+    <div class="col-12 mb-4">
+        <h1 class="display-4">Welcome to the Restaurant Kitchen</h1>
+        <p class="lead">System for managing dishes, ingredients, and cooks.</p>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Dishes</h5>
+                <p class="card-text display-6">{{ num_dishes }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Cooks</h5>
+                <p class="card-text display-6">{{ num_cooks }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card text-white bg-warning mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Dish Types</h5>
+                <p class="card-text display-6">{{ num_dish_types }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
