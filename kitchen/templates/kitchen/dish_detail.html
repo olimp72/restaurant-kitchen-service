@@ -1,48 +1,65 @@
 {% extends "kitchen/base.html" %}
 
-{% block title %}Dish: {{ dish.name }} - Kitchen Service{% endblock %}
+{% block title %}{{ dish.name }} - Details{% endblock %}
 
 {% block content %}
-<div class="row mb-4">
+<div class="row justify-content-center mt-4">
     <div class="col-md-8">
-        <h1>🍽️ {{ dish.name }}</h1>
-        <p class="text-muted">
-            <strong>Dish Type:</strong> {{ dish.dish_type.name }}<br>
-            <strong>Price:</strong> ${{ dish.price }}
-        </p>
-    </div>
-    <div class="col-md-4 text-end">
-        <a href="{% url 'kitchen:dish-update' dish.id %}" class="btn btn-secondary me-2">Update</a>
-        <a href="{% url 'kitchen:dish-delete' dish.id %}" class="btn btn-danger">Delete</a>
-    </div>
-</div>
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h2 class="mb-0">{{ dish.name }}</h2>
+                <span class="badge bg-light text-primary fs-5">${{ dish.price }}</span>
+            </div>
 
-<hr>
-
-<h3 class="mb-3">Cooks who can prepare this dish:</h3>
-
-<div class="row">
-    {% for cook in dish.cooks.all %}
-    <div class="col-md-4 mb-3">
-        <div class="card h-100 shadow-sm">
             <div class="card-body">
-                <h5 class="card-title">
-                    <a href="{% url 'kitchen:cook-detail' cook.id %}" class="text-decoration-none">
-                        👨‍🍳 {{ cook.username }}
-                    </a>
-                </h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{ cook.first_name }} {{ cook.last_name }}</h6>
-                <p class="card-text"><strong>Experience:</strong> {{ cook.years_of_experience }} years</p>
+                <p class="text-muted mb-4">
+                    <strong>Category:</strong> {{ dish.dish_type.name }}
+                </p>
+
+                <h4 class="text-secondary border-bottom pb-2">Description</h4>
+                <p class="fs-5">
+                    {% if dish.description %}
+                        {{ dish.description }}
+                    {% else %}
+                        <em class="text-muted">No description available for this dish yet.</em>
+                    {% endif %}
+                </p>
+
+                <h4 class="text-secondary border-bottom pb-2 mt-4">Ingredients</h4>
+                {% if dish.ingredients.all %}
+                    <ul class="list-group list-group-flush mb-3">
+                        {% for ingredient in dish.ingredients.all %}
+                            <li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i>{{ ingredient.name }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-muted"><em>No ingredients listed.</em></p>
+                {% endif %}
+
+                <h4 class="text-secondary border-bottom pb-2 mt-4">Prepared by:</h4>
+                {% if dish.cooks.all %}
+                    <ul>
+                        {% for cook in dish.cooks.all %}
+                            <li>
+                                <a href="{% url 'kitchen:cook-detail' pk=cook.id %}" class="text-decoration-none">
+                                    {{ cook.first_name }} {{ cook.last_name }} ({{ cook.username }})
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-muted"><em>No cooks assigned to this dish.</em></p>
+                {% endif %}
+
+            </div>
+            <div class="card-footer bg-light d-flex justify-content-between">
+                <a href="{% url 'kitchen:dish-list' %}" class="btn btn-secondary">Back to Menu</a>
+                <div>
+                    <a href="{% url 'kitchen:dish-update' pk=dish.id %}" class="btn btn-warning">Edit</a>
+                    <a href="{% url 'kitchen:dish-delete' pk=dish.id %}" class="btn btn-danger">Delete</a>
+                </div>
             </div>
         </div>
     </div>
-    {% empty %}
-    <div class="col-12">
-        <div class="alert alert-warning">
-            No cooks are currently assigned to prepare this dish.
-        </div>
-    </div>
-    {% endfor %}
 </div>
-
 {% endblock %}
