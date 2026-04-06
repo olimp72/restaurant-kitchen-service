@@ -1,0 +1,29 @@
+{% extends "kitchen/base.html" %}
+
+{% block title %}Delete Cook{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm mt-4 border-danger">
+            <div class="card-header bg-danger text-white">
+                <h4 class="mb-0">Confirm Deletion</h4>
+            </div>
+            <div class="card-body text-center">
+
+                <p class="fs-5">Are you sure you want to delete the cook <strong>"{{ object.username }}"</strong>?</p>
+                <p class="text-muted small">First name: {{ object.first_name }} | Last name: {{ object.last_name }}</p>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-danger px-4">Yes, Delete</button>
+                        <a href="{% url 'kitchen:cook-list' %}" class="btn btn-secondary px-4 ms-2">Cancel</a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

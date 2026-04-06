@@ -1,0 +1,122 @@
+[
+  {
+    "model": "kitchen.dishtype",
+    "pk": 1,
+    "fields": {
+      "name": "Appetizers"
+    }
+  },
+  {
+    "model": "kitchen.dishtype",
+    "pk": 2,
+    "fields": {
+      "name": "Main Courses"
+    }
+  },
+  {
+    "model": "kitchen.dishtype",
+    "pk": 3,
+    "fields": {
+      "name": "Desserts"
+    }
+  },
+  {
+    "model": "kitchen.cook",
+    "pk": 2,
+    "fields": {
+      "username": "gordon_ramsay",
+      "first_name": "Gordon",
+      "last_name": "Ramsay",
+      "years_of_experience": 25,
+      "is_active": true,
+      "is_staff": false
+    }
+  },
+  {
+    "model": "kitchen.cook",
+    "pk": 3,
+    "fields": {
+      "username": "jamie_oliver",
+      "first_name": "Jamie",
+      "last_name": "Oliver",
+      "years_of_experience": 20,
+      "is_active": true,
+      "is_staff": false
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 1,
+    "fields": {
+      "name": "Beef Tenderloin"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 2,
+    "fields": {
+      "name": "Puff Pastry"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 3,
+    "fields": {
+      "name": "Romaine Lettuce"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 4,
+    "fields": {
+      "name": "Chicken Breast"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 5,
+    "fields": {
+      "name": "Dark Chocolate"
+    }
+  },
+  {
+    "model": "kitchen.ingredient",
+    "pk": 6,
+    "fields": {
+      "name": "Butter"
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 1,
+    "fields": {
+      "name": "Beef Wellington",
+      "price": "45.00",
+      "dish_type": 2,
+      "ingredients": [1, 2],
+      "cooks": [2]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 2,
+    "fields": {
+      "name": "Caesar Salad",
+      "price": "12.50",
+      "dish_type": 1,
+      "ingredients": [3, 4],
+      "cooks": [3]
+    }
+  },
+  {
+    "model": "kitchen.dish",
+    "pk": 3,
+    "fields": {
+      "name": "Chocolate Lava Cake",
+      "price": "9.99",
+      "dish_type": 3,
+      "ingredients": [5, 6],
+      "cooks": [2, 3]
+    }
+  }
+]

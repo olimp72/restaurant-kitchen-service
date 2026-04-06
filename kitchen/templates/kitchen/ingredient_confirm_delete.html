@@ -1,0 +1,28 @@
+{% extends "kitchen/base.html" %}
+
+{% block title %}Delete Ingredient{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-sm mt-4 border-danger">
+            <div class="card-header bg-danger text-white">
+                <h4 class="mb-0">Confirm Deletion</h4>
+            </div>
+            <div class="card-body text-center">
+
+                <p class="fs-5">Are you sure you want to delete the ingredient <strong>"{{ object.name }}"</strong>?</p>
+
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-danger px-4">Yes, Delete</button>
+                        <a href="{% url 'kitchen:ingredient-list' %}" class="btn btn-secondary px-4 ms-2">Cancel</a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

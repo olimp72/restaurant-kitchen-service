@@ -1,0 +1,48 @@
+{% extends "kitchen/base.html" %}
+
+{% block title %}Cook: {{ cook.username }} - Kitchen Service{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h1>👨‍🍳 {{ cook.username }}</h1>
+        <p class="text-muted">
+            <strong>Full Name:</strong> {{ cook.first_name }} {{ cook.last_name }}<br>
+            <strong>Years of Experience:</strong> {{ cook.years_of_experience }}
+        </p>
+    </div>
+    <div class="col-md-4 text-end">
+        <a href="{% url 'kitchen:cook-update' cook.id %}" class="btn btn-secondary me-2">Update</a>
+        <a href="{% url 'kitchen:cook-delete' cook.id %}" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+
+<hr>
+
+<h3 class="mb-3">Dishes assigned to this cook:</h3>
+
+<div class="row">
+    {% for dish in cook.dishes.all %}
+    <div class="col-md-4 mb-3">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{% url 'kitchen:dish-detail' dish.id %}" class="text-decoration-none">
+                        {{ dish.name }}
+                    </a>
+                </h5>
+                <h6 class="card-subtitle mb-2 text-muted">Price: ${{ dish.price }}</h6>
+                <p class="card-text"><strong>Type:</strong> {{ dish.dish_type.name }}</p>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="alert alert-info">
+            This cook is not assigned to any dishes yet.
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
