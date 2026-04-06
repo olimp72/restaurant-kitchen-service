@@ -232,6 +232,8 @@ out/
 # JIRA plugin
 atlassian-ide-plugin.xml
 
+.idea/
+
 # Cursive Clojure plugin
 .idea/replstate.xml
 
