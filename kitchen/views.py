@@ -3,8 +3,8 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from .models import Cook, Dish, DishType, Ingredient
-from .forms import CookCreationForm, DishForm
+from kitchen.models import Cook, Dish, DishType, Ingredient
+from kitchen.forms import CookCreationForm, DishForm
 
 def index(request):
     num_cooks = Cook.objects.count()
