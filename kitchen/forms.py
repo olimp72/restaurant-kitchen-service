@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import Cook, Dish
+from kitchen.models import Cook, Dish
 
 class CookCreationForm(UserCreationForm):
     class Meta:
