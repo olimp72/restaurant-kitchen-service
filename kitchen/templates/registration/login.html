@@ -1,23 +1,30 @@
-{% extends "kitchen/base.html" %}
+{% extends "kitchen/layouts/base.html" %}
 {% load crispy_forms_filters %}
-{% load crispy_forms_tags %}
 
 {% block title %}Login - Kitchen Service{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-6 mt-5">
-        <div class="card shadow">
-            <div class="card-header bg-dark text-white">
-                <h4 class="mb-0">Login</h4>
-            </div>
-            <div class="card-body">
-                <form method="post" action="{% url 'login' %}">
-                    {% csrf_token %}
-                    {{ form|crispy }}
-                    <button type="submit" class="btn btn-primary mt-3 w-100">Login</button>
-                    <input type="hidden" name="next" value="{{ next }}">
-                </form>
+<div class="container" style="padding-top: 120px; padding-bottom: 40px;">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white text-center py-3">
+                    <h4 class="mb-0 text-white">Login - Kitchen Service</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form method="post" action="">
+                        {% csrf_token %}
+
+                        {{ form|crispy }}
+
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center bg-light border-0 py-3">
+                    <p class="small mb-0">Don't have an account? Contact your manager.</p>
+                </div>
             </div>
         </div>
     </div>

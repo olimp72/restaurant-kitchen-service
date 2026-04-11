@@ -1,33 +1,37 @@
-{% extends "kitchen/base.html" %}
+{% extends "kitchen/layouts/base.html" %}
 {% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
 
 {% block title %}
-    {% if object %}Update{% else %}Create{% endif %} Ingredient
+    {% if object %}Update{% else %}Create{% endif %} Ingredient - Kitchen Service
 {% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-6">
-        <div class="card shadow-sm mt-4">
-            <div class="card-header bg-primary text-white">
-                <h4 class="mb-0">
-                    {% if object %}Update Ingredient: {{ object.name }}{% else %}Create New Ingredient{% endif %}
-                </h4>
-            </div>
-            <div class="card-body">
+<div class="container" style="padding-top: 120px; padding-bottom: 40px;">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white text-center py-3">
+                    <h4 class="mb-0 text-white">
+                        {% if object %}
+                            Update Ingredient: {{ object.name }}
+                        {% else %}
+                            Create New Ingredient
+                        {% endif %}
+                    </h4>
+                </div>
+                <div class="card-body p-4">
+                    <form method="post" novalidate>
+                        {% csrf_token %}
 
-                <form method="post" novalidate>
-                    {% csrf_token %}
+                        {{ form|crispy }}
 
-                    {{ form|crispy }}
-
-                    <div class="mt-4">
-                        <button type="submit" class="btn btn-success">Save</button>
-                        <a href="{% url 'kitchen:ingredient-list' %}" class="btn btn-secondary">Cancel</a>
-                    </div>
-                </form>
-
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                            <button type="submit" class="btn btn-primary px-4">Save</button>
+                            <a href="{% url 'kitchen:ingredient-list' %}" class="btn btn-outline-secondary px-4">Cancel</a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

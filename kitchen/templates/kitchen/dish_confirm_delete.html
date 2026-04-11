@@ -1,27 +1,26 @@
-{% extends "kitchen/base.html" %}
+{% extends "kitchen/layouts/base.html" %}
 
-{% block title %}Delete Dish{% endblock %}
+{% block title %}Delete Dish Type{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center">
-    <div class="col-md-6">
-        <div class="card shadow-sm mt-4 border-danger">
-            <div class="card-header bg-danger text-white">
-                <h4 class="mb-0">Confirm Deletion</h4>
-            </div>
-            <div class="card-body text-center">
-
-                <p class="fs-5">Are you sure you want to delete the dish <strong>"{{ object.name }}"</strong>?</p>
-                <p class="text-muted small">Price: ${{ object.price }} | Category: {{ object.dish_type.name }}</p>
-
-                <form method="post">
-                    {% csrf_token %}
-                    <div class="mt-4">
-                        <button type="submit" class="btn btn-danger px-4">Yes, Delete</button>
-                        <a href="{% url 'kitchen:dish-list' %}" class="btn btn-secondary px-4 ms-2">Cancel</a>
-                    </div>
-                </form>
-
+<div class="container mt-5 pt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-sm border-danger">
+                <div class="card-header bg-danger text-white text-center">
+                    <h4 class="mb-0 text-white">⚠️ Confirm Deletion</h4>
+                </div>
+                <div class="card-body text-center p-4">
+                    <p class="fs-5 text-danger fw-bold">Warning!</p>
+                    <p class="fs-6">Deleting type <strong>"{{ object.name }}"</strong> may affect associated dishes.</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-danger px-4">Yes, Delete</button>
+                            <a href="{% url 'kitchen:dishtype-list' %}" class="btn btn-light px-4 ms-2">Cancel</a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
