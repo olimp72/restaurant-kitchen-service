@@ -1,44 +1,60 @@
-{% extends "kitchen/base.html" %}
+{% extends "kitchen/layouts/base.html" %}
 
 {% block title %}Dishes - Kitchen Service{% endblock %}
 
 {% block content %}
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <h2>Dishes List</h2>
-    <a href="{% url 'kitchen:dish-create' %}" class="btn btn-primary">+ Add New Dish</a>
+<div class="container mt-5 pt-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">🍕 Dishes List</h2>
+        <a href="{% url 'kitchen:dish-create' %}" class="btn btn-primary">+ Add New Dish</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            {% if dish_list %}
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0 align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th class="px-4">ID</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Price</th>
+                                <th class="text-end px-4">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for dish in dish_list %}
+                            <tr>
+                                <td class="px-4">{{ dish.id }}</td>
+                                <td>
+                                    <a href="{% url 'kitchen:dish-detail' dish.id %}" class="text-bold text-dark">
+                                        {{ dish.name }}
+                                    </a>
+                                </td>
+                                <td>{{ dish.dish_type.name }}</td>
+                                <td>${{ dish.price }}</td>
+                                <td class="text-end px-4">
+                                    <a href="{% url 'kitchen:dish-update' dish.id %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                    <a href="{% url 'kitchen:dish-delete' dish.id %}" class="btn btn-sm btn-outline-danger ms-1">Delete</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="p-4 text-center">
+                    <p class="text-muted mb-0">No dishes found.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="mt-4">
+        {% include "kitchen/includes/pagination.html" %}
+    </div>
+
 </div>
-
-<table class="table table-hover table-bordered shadow-sm">
-    <thead class="table-dark">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Price</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for dish in dish_list %}
-        <tr>
-            <td>{{ dish.id }}</td>
-            <td>
-                <a href="{% url 'kitchen:dish-detail' dish.id %}">{{ dish.name }}</a>
-            </td>
-            <td>{{ dish.dish_type.name }}</td>
-            <td>${{ dish.price }}</td>
-            <td>
-                <a href="{% url 'kitchen:dish-update' dish.id %}" class="btn btn-sm btn-outline-secondary">Edit</a>
-                <a href="{% url 'kitchen:dish-delete' dish.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
-            </td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="5" class="text-center">No dishes found.</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
-{% include "kitchen/includes/pagination.html" %}
 {% endblock %}

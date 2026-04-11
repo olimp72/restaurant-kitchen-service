@@ -1,34 +1,25 @@
-{% extends "kitchen/base.html" %}
+{% extends "kitchen/layouts/base.html" %}
 {% load crispy_forms_filters %}
 {% load crispy_forms_tags %}
 
-{% block title %}
-  {% if object %}Update Cook{% else %}Create Cook{% endif %} - Kitchen Service
-{% endblock %}
-
 {% block content %}
-<div class="row justify-content-center mt-4">
-    <div class="col-md-6">
-        <div class="card shadow-sm">
-            <div class="card-body">
-                <h2 class="card-title mb-4 text-center">
-                    {% if object %}
-                        👨‍🍳 Update Cook
-                    {% else %}
-                        👨‍🍳 Create a New Cook
-                    {% endif %}
-                </h2>
-
-                <form action="" method="post" novalidate>
-                    {% csrf_token %}
-
-                    {{ form|crispy }}
-
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
-                        <a href="{% url 'kitchen:cook-list' %}" class="btn btn-outline-secondary me-md-2">Cancel</a>
-                        <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
-                </form>
+<div class="container" style="padding-top: 100px;">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-primary text-white text-center py-3">
+                    <h4 class="mb-0 text-white">{% if object %}Update Cook{% else %}Create Cook{% endif %}</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                            <button type="submit" class="btn btn-primary px-4">Save</button>
+                            <a href="{% url 'kitchen:cook-list' %}" class="btn btn-outline-secondary px-4">Cancel</a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
