@@ -1,0 +1,193 @@
+[
+{
+    "model": "kitchen.dishtype",
+    "pk": 1,
+    "fields": {
+        "name": "Appetizers"
+    }
+},
+{
+    "model": "kitchen.dishtype",
+    "pk": 2,
+    "fields": {
+        "name": "Main Courses"
+    }
+},
+{
+    "model": "kitchen.dishtype",
+    "pk": 3,
+    "fields": {
+        "name": "Desserts"
+    }
+},
+{
+    "model": "kitchen.cook",
+    "pk": 2,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "gordon_ramsay",
+        "first_name": "Gordon",
+        "last_name": "Ramsay",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-04-11T18:15:24.053Z",
+        "years_of_experience": 25,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kitchen.cook",
+    "pk": 3,
+    "fields": {
+        "password": "",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "jamie_oliver",
+        "first_name": "Jamie",
+        "last_name": "Oliver",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-04-11T18:15:24.054Z",
+        "years_of_experience": 20,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kitchen.cook",
+    "pk": 4,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$09GJY4oJnWV6MUuMCRKot0$uJoVEnOxTu3g4gVYKB5X/t3Wnoe72zLfba9oG2iNrKA=",
+        "last_login": "2026-04-12T07:51:21.523Z",
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "",
+        "last_name": "",
+        "email": "admin@kitchen.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-04-11T18:16:34.823Z",
+        "years_of_experience": null,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kitchen.cook",
+    "pk": 5,
+    "fields": {
+        "password": "pbkdf2_sha256$1200000$2gJlIhni18JAP1fl7lMO8m$MUwj5bamewvJHVAMZGP78yu4bo7S4gankmeWS6DmpMg=",
+        "last_login": "2026-04-12T07:55:37.920Z",
+        "is_superuser": false,
+        "username": "user",
+        "first_name": "user",
+        "last_name": "",
+        "email": "",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-04-12T07:54:53.833Z",
+        "years_of_experience": 25,
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "kitchen.ingredient",
+    "pk": 1,
+    "fields": {
+        "name": "Beef Tenderloin"
+    }
+},
+{
+    "model": "kitchen.ingredient",
+    "pk": 2,
+    "fields": {
+        "name": "Puff Pastry"
+    }
+},
+{
+    "model": "kitchen.ingredient",
+    "pk": 3,
+    "fields": {
+        "name": "Romaine Lettuce"
+    }
+},
+{
+    "model": "kitchen.ingredient",
+    "pk": 4,
+    "fields": {
+        "name": "Chicken Breast"
+    }
+},
+{
+    "model": "kitchen.ingredient",
+    "pk": 5,
+    "fields": {
+        "name": "Dark Chocolate"
+    }
+},
+{
+    "model": "kitchen.ingredient",
+    "pk": 6,
+    "fields": {
+        "name": "Butter"
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 1,
+    "fields": {
+        "name": "Beef Wellington",
+        "description": "",
+        "price": "45.00",
+        "dish_type": 2,
+        "cooks": [
+            2
+        ],
+        "ingredients": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 2,
+    "fields": {
+        "name": "Caesar Salad",
+        "description": "",
+        "price": "12.50",
+        "dish_type": 1,
+        "cooks": [
+            3
+        ],
+        "ingredients": [
+            4,
+            3
+        ]
+    }
+},
+{
+    "model": "kitchen.dish",
+    "pk": 3,
+    "fields": {
+        "name": "Chocolate Lava Cake",
+        "description": "",
+        "price": "9.99",
+        "dish_type": 3,
+        "cooks": [
+            2,
+            3
+        ],
+        "ingredients": [
+            6,
+            5
+        ]
+    }
+}
+]
