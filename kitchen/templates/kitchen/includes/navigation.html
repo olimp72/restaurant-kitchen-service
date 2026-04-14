@@ -39,7 +39,7 @@
               </li>
             </ul>
 
-            <ul class="navbar-nav d-lg-block d-none">
+            <ul class="navbar-nav mt-3 mt-lg-0">
               <li class="nav-item">
                 {% if user.is_authenticated %}
                   <form action="{% url 'logout' %}" method="post" class="d-inline">
